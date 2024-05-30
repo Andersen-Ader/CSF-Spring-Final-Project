@@ -36,10 +36,10 @@ Birthday-"2/45"
 ```
 
 ## Commands
-New - Create a new entry in the database
-Query {search term} - Searches the database for entries containing {search term}
-Print {identifier} - Prints the stored information about the specified entry
-Remove {identifier} - Removes specified entry
-Save - Prints currently saved list to output file
-Reload - Loads current version of the file into the linked list 
-Quit - Saves and ends the program
+New - Create a new entry in the database\\
+Query {search term} - Searches the database for entries containing {search term}\\
+Print {identifier} - Prints the stored information about the specified entry\\
+Remove {identifier} - Removes specified entry\\
+Save - Prints currently saved list to output file\\
+Reload - Loads current version of the file into the linked list \\
+Quit - Saves and ends the program\\
