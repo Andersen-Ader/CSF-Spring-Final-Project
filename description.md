@@ -42,4 +42,4 @@ Print {identifier} - Prints the stored information about the specified entry\
 Remove {identifier} - Removes specified entry\
 Save - Prints currently saved list to output file\
 Reload - Loads current version of the file into the linked list\
-Quit - Saves and ends the program\
+Quit - Saves and ends the program
