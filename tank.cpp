@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>  
 
 using namespace std;
 
@@ -46,6 +47,10 @@ void Tank::print() {
     cout << "Nation - \"" << m_nation << "\"" << endl;
     cout << "Birthday - \"" << m_bday << "\"" << endl << endl;
     cout << "___" << endl;
+}
+
+void Tank::filePrint(ostream &out) {
+  out << m_identifier << " " << m_name << " " << m_armament << " " << m_nation << " " << m_bday << endl;
 }
 
 string Tank::getIdentifier() {
