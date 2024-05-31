@@ -15,6 +15,10 @@ class Node {
         Node(Tank tank) { 
             m_tank = tank; 
             m_next = nullptr; 
+        }
+
+        Node* getNext() {
+            return m_next;
     } 
 };
 
@@ -28,7 +32,6 @@ class TankList {
         TankList(const Tank tankarray[], int size);
         Node* getHead();
         Node* getTail();
-        Node* getNext();
         Tank* searchFor(string target);
         void pushBack(const Tank newItem);
         void pushBack(const Tank tankarray[], int size);
@@ -57,12 +60,25 @@ TankList::TankList(const Tank tankarray[], int size) {
     //Set the last node from the loop above's next node to the tail node
     currNode -> m_next = m_tail;
 }
+Node* TankList::getHead() {
+    return m_head;
+}
+
+Node* TankList::getTail() {
+    return m_tail;
+}
 
 void TankList::pushBack(const Tank newItem) {
     //Create a new node, instantiated with the new tank object
     Node* newNode = new Node(newItem);
     m_tail -> m_next = newNode;
     m_tail = newNode;
+}
+
+void TankList::pushBack(const Tank tankarray[], int size) {
+    TankList bufferList = TankList(tankarray, size);
+    m_tail -> m_next = bufferList.getHead();
+    m_tail = bufferList.getTail();
 }
 
 Tank* TankList::searchFor(string target) {

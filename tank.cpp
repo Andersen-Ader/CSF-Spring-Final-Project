@@ -16,6 +16,7 @@ class Tank {
         Tank();
         Tank(string identifier, string name, string armament, string nation, string bday);
         void print();
+        void filePrint(ostream &out);
         string getIdentifier();
         string getName();
         string getArmament();
