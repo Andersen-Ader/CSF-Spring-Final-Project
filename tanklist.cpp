@@ -50,6 +50,10 @@ TankList::TankList(const Tank tankarray[], int size) {
     for (int i = 1; i < size-1; i++) {
         Node* nextNode = new Node(tankarray[i]);
         currNode -> m_next = nextNode;
+        currNode = nextNode;
     }
+    //Set tail for this list as the last item in the array
     m_tail = new Node(tankarray[size-1]);
+    //Set the last node from the loop above's next node to the tail node
+    currNode -> m_next = m_tail;
 }
