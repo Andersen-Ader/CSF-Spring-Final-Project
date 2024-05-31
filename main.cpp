@@ -13,7 +13,6 @@ void Save();          //saves the current linked list to a file
 void Quit();          //saves the linked list and exits the program
 void ReadFile();      //reads in file to initialize linked list
 
-
 int main (int argc, char *argv[]) {
   string userCommand;
 
@@ -42,37 +41,20 @@ int main (int argc, char *argv[]) {
   return 0;
 }
 
-
 void New() {
-  string identifier;
-  string name;
-  string armament;
-  string nation;
-  string bday;
-  
-  cout << "Enter identifier : ";
-  cin >> identifier;
-  cout << "Enter name : ";
-  cin >> name;
-  cout << "Enter armament : ";
-  cin >> armament;
-  cout << "Enter nation : ";
-  cin >> nation;
-  cout << "Enter Birthday : ";
-  cin >> bday;
-
-  Tank tank(identifier, name, armament, nation, bday);
-  tanklist.pushback(tank);
-  return;
 }
 
 void Print() {
-
 }
 
-void Remove()
-void Save()
-void Quit()
+void Remove() {
+} 
+
+void Save() {
+}
+
+void Quit() {
+}
 
 void ReadFile() {
   string line;
