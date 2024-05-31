@@ -22,7 +22,6 @@ class TankList {
     private:
         Node* m_head;
         Node* m_tail;
-        bool SearchFor(const Tank target);
 
     public:
         TankList();
@@ -30,6 +29,7 @@ class TankList {
         Node* getHead();
         Node* getTail();
         Node* getNext();
+        Tank* searchFor(string target);
         void pushBack(const Tank newItem);
         void pushBack(const Tank tankarray[], int size);
         void pushFront(const Tank newItem);
@@ -56,4 +56,31 @@ TankList::TankList(const Tank tankarray[], int size) {
     m_tail = new Node(tankarray[size-1]);
     //Set the last node from the loop above's next node to the tail node
     currNode -> m_next = m_tail;
+}
+
+void TankList::pushBack(const Tank newItem) {
+    //Create a new node, instantiated with the new tank object
+    Node* newNode = new Node(newItem);
+    m_tail -> m_next = newNode;
+    m_tail = newNode;
+}
+
+Tank* TankList::searchFor(string target) {
+    Node* currNode = m_head;
+    while (currNode != nullptr) {
+        //Search through each of the data fields to see if the search term matches
+        //Any of the tank's fields.
+        if (target.compare(currNode -> m_tank.getArmament())    ||
+            target.compare(currNode -> m_tank.getBday())        ||
+            target.compare(currNode -> m_tank.getIdentifier())  ||
+            target.compare(currNode -> m_tank.getName())        ||
+            target.compare(currNode -> m_tank.getNation())      ){
+                //HIT! Return the tank node
+                return &currNode -> m_tank;
+            } else {
+                currNode = currNode -> m_next;
+            }
+    }
+    //Did not find tank
+    return nullptr;
 }
