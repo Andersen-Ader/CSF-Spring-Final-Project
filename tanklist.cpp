@@ -44,9 +44,9 @@ TankList::TankList() {
 
 TankList::TankList(const Tank tankarray[], int size) {
     m_head = &Node(tankarray[0]);
-    
-    for (int i = 1; i < size-1; i++) {
 
+    for (int i = 1; i < size-1; i++) {
+        
     }
     m_tail = &Node(tankarray[size-1]);
 }
