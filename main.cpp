@@ -57,7 +57,9 @@ void New() {
   cout << "Enter Birthday : ";
   cin >> bday;
 
-
+  Tank tank(identifier, name, armament, nation, bday);
+  tanklist.pushback(tank);
+  return;
 }
 
 void Print() {
