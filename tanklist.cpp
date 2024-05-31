@@ -22,6 +22,7 @@ class TankList {
     private:
         Node* m_head;
         Node* m_tail;
+        bool SearchFor(const Tank target);
 
     public:
         TankList();
@@ -34,7 +35,7 @@ class TankList {
         void pushFront(const Tank newItem);
         void insertAfter(const Tank target);
         void remove(const Tank target);
-        void SearchFor(const Tank target);
+        
 };
 
 TankList::TankList() {
@@ -43,10 +44,12 @@ TankList::TankList() {
 }
 
 TankList::TankList(const Tank tankarray[], int size) {
-    m_head = &Node(tankarray[0]);
-
+    //Set the head node to the first item in the array
+    m_head = new Node(tankarray[0]);
+    Node* currNode = m_head;
     for (int i = 1; i < size-1; i++) {
-        
+        Node* nextNode = new Node(tankarray[i]);
+        currNode -> m_next = nextNode;
     }
-    m_tail = &Node(tankarray[size-1]);
+    m_tail = new Node(tankarray[size-1]);
 }
