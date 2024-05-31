@@ -17,7 +17,7 @@ int main (int argc, char *argv[]) {
   while (true) {
     std::cout << "> ";
     std::cin >> userCommand;
-     if (userCommand.compare("New")) {
+     if (userCommand.compare("New\n")) {
       std::cout << "Works";
       break;
      }
