@@ -7,32 +7,9 @@ Has a REP loop allowing for parsing of basic user commands to find and print par
 ## Example Of Txt File Output
 
 ```
----
-
-Identifier-"USA_M4"
-Name-"M4"
-Armament-"75mm M3"
-Nation-"USA"
-Birthday-"7/42"
-
----
-
-Identifier-"USA_M4A1"
-Name-"M4A1"
-Armament-"75mm M3"
-Nation-"USA"
-Birthday-"2/42"
-
----
-
-Identifier-"USA_T34"
-Name-"M4 T34 Calliope"
-Armament-"M8 Rocket"
-Nation-"USA"
-Birthday-"2/45"
-
----
-
+USA_M4 M4 75mm_M3 USA 7/42
+USA_M4A1 M4A1 75mm_M3 USA 2/42
+USA_T34 Calliope M8_Rocket USA 2/45
 ```
 
 ## Commands
