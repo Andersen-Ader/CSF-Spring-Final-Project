@@ -51,7 +51,7 @@ void Tank::print() {
 }
 
 void Tank::filePrint(ostream &out) {
-  out << m_identifier << " " << m_name << " " << m_armament << " " << m_nation << " " << m_bday << endl;
+  out << m_identifier << " " << m_name << " " << m_armament << " " << m_nation << " " << m_bday << " " << endl;
 }
 
 string Tank::getIdentifier() {

@@ -76,10 +76,11 @@ void Quit()
 
 void ReadFile() {
   string line;
+  string delimiter = " ";
 
   ifstream tanksFile ("tanks.txt");
   if (tanksFile.is_open()) {
-    while (getline(tanksFile, line)) {
+    while (!tanksFile.eof()) {
       
     }
   }
