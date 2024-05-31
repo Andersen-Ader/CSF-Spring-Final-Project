@@ -12,6 +12,7 @@ class Tank {
         string m_bday;
         
     public:
+        Tank();
         Tank(string identifier, string name, string armament, string nation, string bday);
         void print();
         string getIdentifier();
@@ -20,6 +21,14 @@ class Tank {
         string getNation();
         string getBday();
 };
+
+Tank::Tank() {
+    m_identifier = "Null";
+    m_name = "Null";
+    m_armament = "Null";
+    m_nation = "Null";
+    m_bday = "Null";
+}
 
 Tank::Tank(string identifier, string name, string armament, string nation, string bday) {
     m_identifier = identifier;

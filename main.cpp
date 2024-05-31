@@ -1,5 +1,6 @@
 #include <iostream>
 #include "tank.cpp" //Tank(string identifier, string name, string armament, string nation, string bday);
+#include "tanklist.cpp"
 #include <string>
 
 using namespace std;
