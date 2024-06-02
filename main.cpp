@@ -57,12 +57,11 @@ void Quit() {
 }
 
 void ReadFile() {
-  string line;
-  string delimiter = " ";
+  string identifier, name, armament, nation, bday;
 
-  ifstream tanksFile ("tanks.txt");
+  ifstream tanksFile("tanks.txt");
   if (tanksFile.is_open()) {
-    while (!tanksFile.eof()) {
+    while (tanksFile >> identifier >> name >> armament >> nation >> bday) {
       
     }
   }
