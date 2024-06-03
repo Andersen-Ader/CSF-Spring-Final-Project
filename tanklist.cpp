@@ -30,6 +30,7 @@ class TankList {
     public:
         TankList();
         TankList(const Tank tankarray[], int size);
+        TankList(const string FILENAME);
         Node* getHead();
         Node* getTail();
         Tank* searchFor(string target);
@@ -60,6 +61,20 @@ TankList::TankList(const Tank tankarray[], int size) {
     //Set the last node from the loop above's next node to the tail node
     currNode -> m_next = m_tail;
 }
+
+TankList::TankList(const string FILENAME) {
+  string identifier, name, armament, nation, bday;
+
+  m_head = new Node(ifstream)
+
+  ifstream tanksFile("tanks.txt");
+  if (tanksFile.is_open()) {
+    while (tanksFile >> identifier >> name >> armament >> nation >> bday) { 
+      
+    }
+  }
+}
+
 Node* TankList::getHead() {
     return m_head;
 }
