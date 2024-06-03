@@ -64,15 +64,22 @@ TankList::TankList(const Tank tankarray[], int size) {
 
 TankList::TankList(const string FILENAME) {
   string identifier, name, armament, nation, bday;
-
-  m_head = new Node(ifstream)
-
   ifstream tanksFile("tanks.txt");
+
+  tanksFile >> identifier >> name >> armament >> nation >> bday
+
+  m_head = new Node(Tank tank(identifier, name, armament, nation, bday));
+  Node* currNode = m_head;
+
   if (tanksFile.is_open()) {
     while (tanksFile >> identifier >> name >> armament >> nation >> bday) { 
-      
+      Node* nextNode = new Node(Tank tank(identifier, name, armement, nation, bday));
+      currNode -> m_next = nextNode;
+      currNode = nextNode;
     }
   }
+
+  m_tail = currNode;
 }
 
 Node* TankList::getHead() {
