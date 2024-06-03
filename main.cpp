@@ -11,12 +11,9 @@ void Print();         //prints a node based on the given identifier
 void Remove();        //removes a node based on the given identifier
 void Save();          //saves the current linked list to a file
 void Quit();          //saves the linked list and exits the program
-void ReadFile();      //reads in file to initialize linked list
 
 int main (int argc, char *argv[]) {
   string userCommand;
-
-  ReadFile();
 
   while (true) {
     cout << "> ";
@@ -56,13 +53,3 @@ void Save() {
 void Quit() {
 }
 
-void ReadFile() {
-  string identifier, name, armament, nation, bday;
-
-  ifstream tanksFile("tanks.txt");
-  if (tanksFile.is_open()) {
-    while (tanksFile >> identifier >> name >> armament >> nation >> bday) {
-      
-    }
-  }
-}
