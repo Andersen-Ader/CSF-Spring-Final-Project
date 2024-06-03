@@ -46,7 +46,7 @@ TankList::TankList() {
     m_head = nullptr;
     m_tail = nullptr;
 }
-
+/*
 TankList::TankList(const Tank tankarray[], int size) {
     //Set the head node to the first item in the array
     m_head = new Node(tankarray[0]);
@@ -61,19 +61,22 @@ TankList::TankList(const Tank tankarray[], int size) {
     //Set the last node from the loop above's next node to the tail node
     currNode -> m_next = m_tail;
 }
-
+*/ 
 TankList::TankList(const string FILENAME) {
   string identifier, name, armament, nation, bday;
   ifstream tanksFile("tanks.txt");
 
-  tanksFile >> identifier >> name >> armament >> nation >> bday
+  tanksFile >> identifier >> name >> armament >> nation >> bday;
 
-  m_head = new Node(Tank tank(identifier, name, armament, nation, bday));
+  Tank tank(identifier, name, armament, nation, bday);
+
+  m_head = new Node(tank);
   Node* currNode = m_head;
 
   if (tanksFile.is_open()) {
     while (tanksFile >> identifier >> name >> armament >> nation >> bday) { 
-      Node* nextNode = new Node(Tank tank(identifier, name, armement, nation, bday));
+      Tank tank(identifier, name, armament, nation, bday);
+      Node* nextNode = new Node(tank);
       currNode -> m_next = nextNode;
       currNode = nextNode;
     }
