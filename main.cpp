@@ -54,7 +54,7 @@ void New(TankList* tanklist) {
   cin >> bday;
 
   Tank tank;
-  tank.TankSetter(identifier, name, armament, nation, bday);
+  tank.TankSetter(identifier, name, armament, nation, bday); // TODO Make this a constructor so we don't have this stupidity
 
   tanklist -> pushBack(tank);
 
@@ -66,7 +66,11 @@ void Print(TankList* tanklist) {
   cout << "Enter Identifier: ";
   cin >> userIn;
   Tank* tank = tanklist->searchFor(userIn);
-  tank->print();
+  if (tank != nullptr) {
+    tank->print();
+  } else {
+    std::cout << userIn << " is not a valid identifier" << endl;
+  }
   return;
 }
 
