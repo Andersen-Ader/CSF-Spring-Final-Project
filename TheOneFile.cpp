@@ -64,7 +64,7 @@ class TankList {
         
 };
 
-void New();           //adds a new entry to the list
+void New(TankList* tanklist);           //adds a new entry to the list
 void Print(TankList* tanklist);         //prints a node based on the given identifier
 void Remove();        //removes a node based on the given identifier
 void Save();          //saves the current linked list to a file
@@ -79,7 +79,7 @@ int main (int argc, char *argv[]) {
     cout << "> ";
     cin >> userCommand;
     if (!userCommand.compare("New")) {
-      New();
+      New(&tanklist);
     }
     if (!userCommand.compare("Print")) {
       Print(&tanklist);
@@ -98,8 +98,25 @@ int main (int argc, char *argv[]) {
   return 0;
 }
 
-void New() {
-    return;
+void New(TankList* tanklist) {
+  string identifier, name, armament, nation, bday;
+  cout << "Identifier: ";
+  cin >> identifier;
+  cout << "Name: ";
+  cin >> name;
+  cout << "Armament: ";
+  cin >> armament;
+  cout << "Nation: ";
+  cin >> nation;
+  cout << "Birthday: ";
+  cin >> bday;
+
+  Tank tank;
+  tank.TankSetter(identifier, name, armament, nation, bday);
+
+  tanklist->pushBack(tank);
+
+  return;
 }
 
 void Print(TankList* tanklist) {
@@ -108,19 +125,19 @@ void Print(TankList* tanklist) {
   cin >> userIn;
   Tank* tank = tanklist->searchFor(userIn);
   tank->print();
-    return;
+  return;
 }
 
 void Remove() {
-    return;
+  return;
 } 
 
 void Save() {
-    return;
+  return;
 }
 
 void Quit() {
-    return;
+  return;
 }
 
 Tank::Tank() {
