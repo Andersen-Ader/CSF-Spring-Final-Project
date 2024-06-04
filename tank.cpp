@@ -13,7 +13,7 @@ class Tank {
         string m_bday;
         
     public:
-        //Tank();
+        Tank();
         Tank(string identifier, string name, string armament, string nation, string bday);
         void print();
         void filePrint(ostream &out);
@@ -23,7 +23,7 @@ class Tank {
         string getNation();
         string getBday();
 };
-/*
+
 Tank::Tank() {
     m_identifier = "Null";
     m_name = "Null";
@@ -31,7 +31,7 @@ Tank::Tank() {
     m_nation = "Null";
     m_bday = "Null";
 }
-*/
+
 Tank::Tank(string identifier, string name, string armament, string nation, string bday) {
     m_identifier = identifier;
     m_name = name;

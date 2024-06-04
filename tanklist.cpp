@@ -29,13 +29,13 @@ class TankList {
 
     public:
         TankList();
-        TankList(const Tank tankarray[], int size);
+        //TankList(const Tank tankarray[], int size);
         TankList(const string FILENAME);
         Node* getHead();
         Node* getTail();
         Tank* searchFor(string target);
         void pushBack(const Tank newItem);
-        void pushBack(const Tank tankarray[], int size);
+        //void pushBack(const Tank tankarray[], int size);
         void pushFront(const Tank newItem);
         void insertAfter(const Tank target);
         void remove(const Tank target);
@@ -99,13 +99,13 @@ void TankList::pushBack(const Tank newItem) {
     m_tail -> m_next = newNode;
     m_tail = newNode;
 }
-
+/*
 void TankList::pushBack(const Tank tankarray[], int size) {
     TankList bufferList = TankList(tankarray, size);
     m_tail -> m_next = bufferList.getHead();
     m_tail = bufferList.getTail();
 }
-
+*/
 Tank* TankList::searchFor(string target) {
     Node* currNode = m_head;
     while (currNode != nullptr) {
