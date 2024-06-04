@@ -121,7 +121,7 @@ void New(TankList* tanklist) {
 
 void Print(TankList* tanklist) {
   string userIn;
-  cout << "Identifier: ";
+  cout << "Enter Identifier: ";
   cin >> userIn;
   Tank* tank = tanklist->searchFor(userIn);
   tank->print();
@@ -240,18 +240,13 @@ void TankList::pushBack(const Tank newItem) {
 Tank* TankList::searchFor(string target) {
     Node* currNode = m_head;
     while (currNode != nullptr) {
-        //Search through each of the data fields to see if the search term matches
-        //Any of the tank's fields.
-        if (target.compare(currNode -> m_tank.getArmament())    ||
-            target.compare(currNode -> m_tank.getBday())        ||
-            target.compare(currNode -> m_tank.getIdentifier())  ||
-            target.compare(currNode -> m_tank.getName())        ||
-            target.compare(currNode -> m_tank.getNation())      ){
-                //HIT! Return the tank node
-                return &currNode -> m_tank;
-            } else {
-                currNode = currNode -> m_next;
-            }
+        //Search through each node for the tank with the target identifier
+        if (target == currNode -> m_tank.getIdentifier()){
+          //HIT! Return the tank node
+          return &currNode -> m_tank;
+        } else {
+          currNode = currNode -> m_next;
+        }
     }
     //Did not find tank
     return nullptr;
