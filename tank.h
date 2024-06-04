@@ -1,3 +1,5 @@
+#ifndef tank_h
+#define tank_h
 #include <iostream>
 #include <string>
 #include <fstream>  
@@ -14,7 +16,7 @@ class Tank {
         
     public:
         Tank();
-        Tank(string identifier, string name, string armament, string nation, string bday);
+        void TankSetter(string identifier, string name, string armament, string nation, string bday);
         void print();
         void filePrint(ostream &out);
         string getIdentifier();
@@ -25,14 +27,15 @@ class Tank {
 };
 
 Tank::Tank() {
-    m_identifier = "Null";
-    m_name = "Null";
-    m_armament = "Null";
-    m_nation = "Null";
-    m_bday = "Null";
+    string nullStr = "Null";
+    m_identifier = nullStr;
+    m_name = nullStr;
+    m_armament = nullStr;
+    m_nation = nullStr;
+    m_bday = nullStr;
 }
 
-Tank::Tank(string identifier, string name, string armament, string nation, string bday) {
+void Tank::TankSetter(string identifier, string name, string armament, string nation, string bday) {
     m_identifier = identifier;
     m_name = name;
     m_armament = armament;
@@ -74,3 +77,4 @@ string Tank::getBday() {
     return m_bday;
 }
 
+#endif
