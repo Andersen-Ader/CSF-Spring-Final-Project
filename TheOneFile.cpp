@@ -76,19 +76,19 @@ int main (int argc, char *argv[]) {
   while (true) {
     cout << "> ";
     cin >> userCommand;
-    if (userCommand.compare("New\n")) {
+    if (!userCommand.compare("New")) {
       New();
     }
-    if (userCommand.compare("Print\n")) {
+    if (!userCommand.compare("Print")) {
       Print();
     }
-    if (userCommand.compare("Remove\n")) {
+    if (!userCommand.compare("Remove")) {
       Remove();
     }
-    if (userCommand.compare("Save\n")) {
+    if (!userCommand.compare("Save")) {
       Save();
     }
-    if (userCommand.compare("Quit\n")) {
+    if (!userCommand.compare("Quit")) {
       Save();
       break;
     }
