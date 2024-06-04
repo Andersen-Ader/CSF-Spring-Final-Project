@@ -14,7 +14,7 @@ class Tank {
         
     public:
         Tank();
-        Tank(string identifier, string name, string armament, string nation, string bday);
+        void TankSetter(string identifier, string name, string armament, string nation, string bday);
         void print();
         void filePrint(ostream &out);
         string getIdentifier();
@@ -30,7 +30,7 @@ class Node {
         Node* m_next; 
   
         Node() { 
-            m_tank = Tank("Null", "Null", "Null", "Null", "Null"); 
+            m_tank = Tank(); 
             m_next = nullptr; 
         } 
   
@@ -65,7 +65,7 @@ class TankList {
 };
 
 void New();           //adds a new entry to the list
-void Print();         //prints a node based on the given identifier
+void Print(TankList* tanklist);         //prints a node based on the given identifier
 void Remove();        //removes a node based on the given identifier
 void Save();          //saves the current linked list to a file
 void Quit();          //saves the linked list and exits the program
@@ -82,7 +82,7 @@ int main (int argc, char *argv[]) {
       New();
     }
     if (!userCommand.compare("Print")) {
-      Print();
+      Print(&tanklist);
     }
     if (!userCommand.compare("Remove")) {
       Remove();
@@ -102,7 +102,12 @@ void New() {
     return;
 }
 
-void Print() {
+void Print(TankList* tanklist) {
+  string userIn;
+  cout << "Identifier: ";
+  cin >> userIn;
+  Tank* tank = tanklist->searchFor(userIn);
+  tank->print();
     return;
 }
 
@@ -127,7 +132,7 @@ Tank::Tank() {
     m_bday = nullStr;
 }
 
-Tank::Tank(string identifier, string name, string armament, string nation, string bday) {
+void Tank::TankSetter(string identifier, string name, string armament, string nation, string bday) {
     m_identifier = identifier;
     m_name = name;
     m_armament = armament;
@@ -173,36 +178,24 @@ TankList::TankList() {
     m_head = nullptr;
     m_tail = nullptr;
 }
-/*
-TankList::TankList(const Tank tankarray[], int size) {
-    //Set the head node to the first item in the array
-    m_head = new Node(tankarray[0]);
-    Node* currNode = m_head;
-    for (int i = 1; i < size-1; i++) {
-        Node* nextNode = new Node(tankarray[i]);
-        currNode -> m_next = nextNode;
-        currNode = nextNode;
-    }
-    //Set tail for this list as the last item in the array
-    m_tail = new Node(tankarray[size-1]);
-    //Set the last node from the loop above's next node to the tail node
-    currNode -> m_next = m_tail;
-}
-*/ 
+
 TankList::TankList(const string FILENAME) {
   string identifier, name, armament, nation, bday;
   ifstream tanksFile("tanks.txt");
 
   tanksFile >> identifier >> name >> armament >> nation >> bday;
 
-  Tank tank(identifier, name, armament, nation, bday);
+  Tank tank;
+  tank.TankSetter(identifier, name, armament, nation, bday);
 
   m_head = new Node(tank);
   Node* currNode = m_head;
 
   if (tanksFile.is_open()) {
     while (tanksFile >> identifier >> name >> armament >> nation >> bday) { 
-      Tank tank(identifier, name, armament, nation, bday);
+      Tank tank;
+      tank.TankSetter(identifier, name, armament, nation, bday);
+
       Node* nextNode = new Node(tank);
       currNode -> m_next = nextNode;
       currNode = nextNode;
@@ -226,13 +219,7 @@ void TankList::pushBack(const Tank newItem) {
     m_tail -> m_next = newNode;
     m_tail = newNode;
 }
-/*
-void TankList::pushBack(const Tank tankarray[], int size) {
-    TankList bufferList = TankList(tankarray, size);
-    m_tail -> m_next = bufferList.getHead();
-    m_tail = bufferList.getTail();
-}
-*/
+
 Tank* TankList::searchFor(string target) {
     Node* currNode = m_head;
     while (currNode != nullptr) {
