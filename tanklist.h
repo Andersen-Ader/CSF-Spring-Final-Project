@@ -54,16 +54,15 @@ TankList::TankList(const string FILENAME) {
 
   tanksFile >> identifier >> name >> armament >> nation >> bday;
 
-  Tank tank;
-  tank.TankSetter(identifier, name, armament, nation, bday);
+  Tank tank(identifier, name, armament, nation, bday);
+  
 
   m_head = new Node(tank);
   Node* currNode = m_head;
 
   if (tanksFile.is_open()) {
     while (tanksFile >> identifier >> name >> armament >> nation >> bday) { 
-      Tank tank;
-      tank.TankSetter(identifier, name, armament, nation, bday);
+      Tank tank(identifier, name, armament, nation, bday);;
 
       Node* nextNode = new Node(tank);
       currNode -> m_next = nextNode;

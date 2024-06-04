@@ -53,8 +53,7 @@ void New(TankList* tanklist) {
   cout << "Birthday: ";
   cin >> bday;
 
-  Tank tank;
-  tank.TankSetter(identifier, name, armament, nation, bday); // TODO Make this a constructor so we don't have this stupidity
+  Tank tank(identifier, name, armament, nation, bday);
 
   tanklist -> pushBack(tank);
 

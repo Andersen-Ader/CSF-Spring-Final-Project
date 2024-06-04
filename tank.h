@@ -16,7 +16,7 @@ class Tank {
         
     public:
         Tank();
-        void TankSetter(string identifier, string name, string armament, string nation, string bday);
+        Tank(string identifier, string name, string armament, string nation, string bday);
         void print();
         void filePrint(ostream &out);
         string getIdentifier();
@@ -35,7 +35,7 @@ Tank::Tank() {
     m_bday = nullStr;
 }
 
-void Tank::TankSetter(string identifier, string name, string armament, string nation, string bday) {
+Tank::Tank(string identifier, string name, string armament, string nation, string bday) {
     m_identifier = identifier;
     m_name = name;
     m_armament = armament;
