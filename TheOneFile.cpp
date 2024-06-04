@@ -73,6 +73,8 @@ void Quit();          //saves the linked list and exits the program
 int main (int argc, char *argv[]) {
   string userCommand;
 
+  TankList tanklist("tanks.txt");
+
   while (true) {
     cout << "> ";
     cin >> userCommand;
