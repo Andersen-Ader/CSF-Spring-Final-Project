@@ -23,9 +23,11 @@ void FindPath(Node array[SIZE_X][SIZE_Y], int curr_x, int curr_y, int end_x, int
     return;
   }
 
+  Node currNode = array[curr_x][curr_y]
+
   array[curr_x][curr_y].Visited = 1;
 
-  if (!(array[array[curr_x][curr_y].north][curr_y].isBarrier || array[array[curr_x][curr_y].north][curr_y].Visited)) {
+  if (!(array[currNode.north][curr_y].isBarrier)) {
     cout << "Yay" << endl;
     return;
   }
