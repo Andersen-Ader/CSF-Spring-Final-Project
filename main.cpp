@@ -9,7 +9,7 @@ using namespace std;
 void New(TankList* tanklist);           //adds a new entry to the list
 void Print(TankList* tanklist);         //prints a node based on the given identifier
 void Remove();        //removes a node based on the given identifier
-void Save();          //saves the current linked list to a file
+void Save(TankList* tanklist);          //saves the current linked list to a file
 void Quit();          //saves the linked list and exits the program
 
 int main (int argc, char *argv[]) {
@@ -30,10 +30,10 @@ int main (int argc, char *argv[]) {
       Remove();
     }
     if (!userCommand.compare("Save")) {
-      Save();
+      Save(&tanklist);
     }
     if (!userCommand.compare("Quit")) {
-      Save();
+      Save(&tanklist);
       break;
     }
   }
@@ -77,6 +77,16 @@ void Remove() {
   return;
 } 
 
-void Save() {
+void Save(TankList* tanklist) {
+  ofstream tanksFile("tanks.txt");
+
+  Node* currNode = tanklist->getHead();
+  Tank currTank = currNode->m_tank;
+  while (currNode->getNext() != nullptr) {
+    currTank.filePrint(tanksFile);
+    currNode = currNode->getNext();
+    currTank = currNode->m_tank;
+  }
+
   return;
 }

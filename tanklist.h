@@ -105,6 +105,7 @@ Tank* TankList::searchFor(string target) {
 }
 
 int TankList::removeEntry(string target) {
+  return 0;
 }
 
 #endif
