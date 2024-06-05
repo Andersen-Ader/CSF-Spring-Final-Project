@@ -19,6 +19,7 @@ class TankList {
         Node* getHead();
         Node* getTail();
         Tank* searchFor(string target);
+        int removeEntry(string target);
         void pushBack(const Tank newItem);
         void pushBack(const Tank tankarray[], int size);
         void pushFront(const Tank newItem);
@@ -101,6 +102,9 @@ Tank* TankList::searchFor(string target) {
     }
     //Did not find tank
     return nullptr;
+}
+
+int TankList::removeEntry(string target) {
 }
 
 #endif
