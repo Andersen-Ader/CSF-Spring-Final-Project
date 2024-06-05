@@ -18,7 +18,7 @@ int main (int argc, char *argv[]) {
   TankList tanklist("tanks.txt");
 
   while (true) {
-    cout << "> ";
+    cout << ">> ";
     cin >> userCommand;
     if (!userCommand.compare("New")) {
       New(&tanklist);
@@ -78,9 +78,5 @@ void Remove() {
 } 
 
 void Save() {
-  return;
-}
-
-void Quit() {
   return;
 }
