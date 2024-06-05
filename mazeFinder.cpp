@@ -7,8 +7,8 @@
 using namespace std;
 
 typedef struct Node {
-	int isBarrier = 0;
-	int Visited = 0;
+	int isBarrier;
+	int Visited;
 	int ownX;
 	int ownY;	
 	int north;
@@ -17,36 +17,42 @@ typedef struct Node {
 	int west;
 } Node;
 
+string UpdatedPath(string path, char c) {
+  path.push_back(c);
+  return path;
+}
+
 void FindPath(Node array[SIZE_X][SIZE_Y], int curr_x, int curr_y, int end_x, int end_y, string path) {
-  if (curr_x == end_x && curr_y == end_y) {
+  if ((curr_x == end_x) && (curr_y == end_y)) {
     cout << path << endl;
     return;
   }
 
-  cout << curr_x << " " << curr_y << endl;
-
   Node currNode = array[curr_x][curr_y];
-
   array[curr_x][curr_y].Visited = 1;
 
-  if (currNode.north >= 0 && array[currNode.north][curr_y].isBarrier == 0 && array[currNode.north][curr_y].Visited == 0) {
-    path.push_back('N');
-    FindPath(array, currNode.north, curr_y, end_x, end_y, path);
+  if ((currNode.north >= 0) 
+      && (array[currNode.north][curr_y].isBarrier == 0) 
+      && (array[currNode.north][curr_y].Visited == 0)) {
+    FindPath(array, currNode.north, curr_y, end_x, end_y, UpdatedPath(path, 'N'));
   }
 
-  if (currNode.south < SIZE_X && array[currNode.south][curr_y].isBarrier == 0 && array[currNode.south][curr_y].Visited == 0) {
-    path.push_back('S');
-    FindPath(array, currNode.south, curr_y, end_x, end_y, path);
+  if ((currNode.south < SIZE_X) 
+      && (array[currNode.south][curr_y].isBarrier == 0) 
+      && (array[currNode.south][curr_y].Visited == 0)) {
+    FindPath(array, currNode.south, curr_y, end_x, end_y, UpdatedPath(path, 'S'));
   }
   
-  if (currNode.east < SIZE_Y && array[curr_x][currNode.east].isBarrier == 0 && array[curr_x][currNode.east].Visited == 0) {
-    path.push_back('E');
-    FindPath(array, curr_x, currNode.east, end_x, end_y, path);
+  if ((currNode.east < SIZE_Y) 
+      && (array[curr_x][currNode.east].isBarrier == 0) 
+      && (array[curr_x][currNode.east].Visited == 0)) {
+    FindPath(array, curr_x, currNode.east, end_x, end_y, UpdatedPath(path, 'E'));
   }
   
-  if (currNode.west >= 0 && array[curr_x][currNode.west].isBarrier == 0 && array[curr_x][currNode.west].Visited == 0) {
-    path.push_back('W');
-    FindPath(array, curr_x, currNode.west, end_x, end_y, path);
+  if ((currNode.west >= 0) 
+      && (array[curr_x][currNode.west].isBarrier == 0) 
+      && (array[curr_x][currNode.west].Visited == 0)) {
+    FindPath(array, curr_x, currNode.west, end_x, end_y, UpdatedPath(path, 'W'));
   }
   
   return;
@@ -66,6 +72,8 @@ int main(void) {
 			array[i][j].south = i + 1;
 			array[i][j].east = j + 1;
 			array[i][j].west = j - 1;
+      array[i][j].isBarrier = 0;
+      array[i][j].Visited = 0;
 		}
 	}	
 
@@ -108,20 +116,11 @@ int main(void) {
   array[9][4].isBarrier = 1;
   array[9][6].isBarrier = 1;
   array[9][8].isBarrier = 1;
+ 
 
-
+  array[1][0].Visited = 1;
 
   FindPath(array, start_x, start_y, end_x, end_y, path);
-
-
-/*
-	for ( int i = 0; i < SIZE_X; ++i) {
-		for ( int j = 0; j < SIZE_Y; ++j) {
-      cout << array[i][j].isBarrier << " ";
-		}
-    cout << endl;
-  }
-*/
 
 	return 0;
 }
