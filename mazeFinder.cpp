@@ -17,10 +17,12 @@ typedef struct Node {
 	int west;
 } Node;
 
+//Append characters to path string, keep track of path
 string UpdatedPath(string path, char c) {
   path.push_back(c);
   return path;
 }
+
 
 void FindPath(Node array[SIZE_X][SIZE_Y], int curr_x, int curr_y, int end_x, int end_y, string path) {
   if ((curr_x == end_x) && (curr_y == end_y)) {
@@ -30,10 +32,10 @@ void FindPath(Node array[SIZE_X][SIZE_Y], int curr_x, int curr_y, int end_x, int
 
   //TODO make program choose nsew based on previous step, use string.end and ascii equivalence.
 
-
   Node currNode = array[curr_x][curr_y];
   array[curr_x][curr_y].Visited = 1;
-
+  //Check each possible movement to see if that direction is a blocked path, hasn't been visited
+  //And is within bounds of the array. North, south, east, west.
   if ((currNode.north >= 0) 
       && (array[currNode.north][curr_y].isBarrier == 0) 
       && (array[currNode.north][curr_y].Visited == 0)) {
@@ -67,6 +69,7 @@ int main(void) {
   int end_x = 9, end_y = 7;
   string path;
 
+  //Creates/Initializes array with coordinates and coordinates to the next node.
 	for ( int i = 0; i < SIZE_X; ++i) {
 		for ( int j = 0; j < SIZE_Y; ++j) {
 			array[i][j].ownX = i;
@@ -123,6 +126,7 @@ int main(void) {
 
   array[1][0].Visited = 1;
 
+  //Find path, will output the char array with directions to get through maze.
   FindPath(array, start_x, start_y, end_x, end_y, path);
 
 	return 0;
