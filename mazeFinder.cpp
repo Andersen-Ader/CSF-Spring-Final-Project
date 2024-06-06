@@ -126,6 +126,20 @@ int main(void) {
 
   array[1][0].Visited = 1;
 
+  for (int i = 0; i < SIZE_X; i++) {
+    cout << "  ";
+    for (int j = 0; j < SIZE_Y; j++) {
+      if (i == start_x && j == start_y) {
+        cout << "S ";
+      } else if (i == end_x && j == end_y) {
+        cout << "E ";
+      } else {
+        cout << array[i][j].isBarrier << " ";
+      }
+    }
+    cout << endl;
+  }
+
   //Find path, will output the char array with directions to get through maze.
   FindPath(array, start_x, start_y, end_x, end_y, path);
 
