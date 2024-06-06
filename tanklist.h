@@ -20,6 +20,7 @@ class TankList {
         Node* getTail();
         Tank* searchFor(string target);
         int removeEntry(string target);
+        void pushHead();
         void pushBack(const Tank newItem);
         void pushBack(const Tank tankarray[], int size);
         void pushFront(const Tank newItem);
@@ -51,7 +52,8 @@ TankList::TankList() {
 
 TankList::TankList(const string FILENAME) {
   string identifier, name, armament, nation, bday;
-  ifstream tanksFile("tanks.txt");
+  ifstream tanksFile;
+  tanksFile.open("tanks.txt");
 
   tanksFile >> identifier >> name >> armament >> nation >> bday;
 
@@ -72,6 +74,7 @@ TankList::TankList(const string FILENAME) {
   }
 
   m_tail = currNode;
+  tanksFile.close();
 }
 
 Node* TankList::getHead() {
@@ -106,6 +109,13 @@ Tank* TankList::searchFor(string target) {
 
 int TankList::removeEntry(string target) {
   return 0;
+}
+
+void TankList::pushHead() {
+  Node* pastHead = m_head;
+  m_head = pastHead->getNext();
+  free(pastHead);
+  return;
 }
 
 #endif

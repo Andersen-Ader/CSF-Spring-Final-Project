@@ -8,7 +8,7 @@ using namespace std;
 
 void New(TankList* tanklist);           //adds a new entry to the list
 void Print(TankList* tanklist);         //prints a node based on the given identifier
-void Remove();        //removes a node based on the given identifier
+void Remove(TankList* tanklist);        //removes a node based on the given identifier
 void Save(TankList* tanklist);          //saves the current linked list to a file
 void Quit();          //saves the linked list and exits the program
 
@@ -27,7 +27,7 @@ int main (int argc, char *argv[]) {
       Print(&tanklist);
     }
     if (!userCommand.compare("Remove")) {
-      Remove();
+      Remove(&tanklist);
     }
     if (!userCommand.compare("Save")) {
       Save(&tanklist);
@@ -73,20 +73,51 @@ void Print(TankList* tanklist) {
   return;
 }
 
-void Remove() {
+void Remove(TankList* tanklist) {
+  string userIn;
+  
+  Node* currNode = tanklist->getHead();
+  Node* previousNode = tanklist->getHead();
+
+  cout << "Enter Identifier: ";
+  cin >> userIn;
+
+  if(currNode->m_tank.getIdentifier() == userIn) {
+    tanklist->pushHead();
+    cout << "Entry Removed\n";
+    return;
+  }
+
+  currNode = currNode->m_next;
+  while (currNode->m_tank.getIdentifier() != userIn) {
+    currNode = currNode->m_next;
+    previousNode = previousNode->m_next;
+  }
+
+  previousNode->m_next = currNode->m_next;
+  cout << "Entry Removed\n";
+
+  free(currNode);
+  
   return;
 } 
 
 void Save(TankList* tanklist) {
-  ofstream tanksFile("tanks.txt");
+  ofstream tanksFile;
+  tanksFile.open("tankTest.txt");
 
   Node* currNode = tanklist->getHead();
-  Tank currTank = currNode->m_tank;
-  while (currNode->getNext() != nullptr) {
+  while (currNode != nullptr) {
+    Tank currTank = currNode->m_tank;
     currTank.filePrint(tanksFile);
-    currNode = currNode->getNext();
-    currTank = currNode->m_tank;
+    currNode = currNode->m_next;
   }
 
+  tanksFile.close();
   return;
+}
+
+void Quit(TankList* tanklist) {
+  Save(tanklist);
+
 }
