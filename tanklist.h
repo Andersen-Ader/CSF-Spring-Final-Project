@@ -94,13 +94,16 @@ void TankList::pushHead() {
 
 void TankList::freeList() {
     Node* currNode = m_head;
-    Node* nextNode = m_head -> getNext();
-    while (currNode != nullptr) {
+    Node* nextNode = m_head -> m_next;
+    do {
         //Free the current node, set current node to next node and set next node to the node after.
         free(currNode);
         currNode = nextNode;
-        nextNode = currNode -> getNext();
-    }
+        if (currNode != nullptr) {
+            nextNode = currNode -> m_next;
+        }
+        
+    } while (currNode != nullptr); 
     cout << "Successfully cleared tanklist memory." << endl;
 }
 
