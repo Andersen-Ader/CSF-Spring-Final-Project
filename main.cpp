@@ -10,7 +10,7 @@ void New(TankList* tanklist);           //adds a new entry to the list
 void Print(TankList* tanklist);         //prints a node based on the given identifier
 void Remove(TankList* tanklist);        //removes a node based on the given identifier
 void Save(TankList* tanklist);          //saves the current linked list to a file
-void Quit();          //saves the linked list and exits the program
+void Quit(TankList* tanklist);          //saves the linked list and exits the program
 
 int main (int argc, char *argv[]) {
   string userCommand;
@@ -33,7 +33,7 @@ int main (int argc, char *argv[]) {
       Save(&tanklist);
     }
     if (!userCommand.compare("Quit")) {
-      Save(&tanklist);
+      Quit(&tanklist);
       break;
     }
   }
@@ -119,5 +119,5 @@ void Save(TankList* tanklist) {
 
 void Quit(TankList* tanklist) {
   Save(tanklist);
-
+  tanklist->freeList();
 }
