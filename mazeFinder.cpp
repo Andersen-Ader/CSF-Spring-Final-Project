@@ -28,6 +28,9 @@ void FindPath(Node array[SIZE_X][SIZE_Y], int curr_x, int curr_y, int end_x, int
     return;
   }
 
+  //TODO make program choose nsew based on previous step, use string.end and ascii equivalence.
+
+
   Node currNode = array[curr_x][curr_y];
   array[curr_x][curr_y].Visited = 1;
 
