@@ -104,7 +104,7 @@ void Remove(TankList* tanklist) {
 
 void Save(TankList* tanklist) {
   ofstream tanksFile;
-  tanksFile.open("tankTest.txt");
+  tanksFile.open("tanks.txt");
 
   Node* currNode = tanklist->getHead();
   while (currNode != nullptr) {

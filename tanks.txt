@@ -1,3 +1,4 @@
 USA_M4 M4 75mm_M3 USA 7/42 
 USA_M4A1 M4A1 75mm_M3 USA 2/42 
-USA_T34 Calliope M8_Rocket USA 2/45
+USA_T34 Calliope M8_Rocket USA 2/45 
+USA_M4A2 M4A2 75mm_M3 USA Unknown 
