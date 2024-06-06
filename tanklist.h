@@ -14,37 +14,15 @@ class TankList {
 
     public:
         TankList();
-        TankList(const Tank tankarray[], int size);
         TankList(const string FILENAME);
         Node* getHead();
         Node* getTail();
         Tank* searchFor(string target);
-        int removeEntry(string target);
         void pushHead();
         void pushBack(const Tank newItem);
-        void pushBack(const Tank tankarray[], int size);
-        void pushFront(const Tank newItem);
-        void insertAfter(const Tank target);
-        void remove(const Tank target);
-        
+        void freeList();
 };
 
-/*
-TankList::TankList(const Tank tankarray[], int size) {
-    //Set the head node to the first item in the array
-    m_head = new Node(tankarray[0]);
-    Node* currNode = m_head;
-    for (int i = 1; i < size-1; i++) {
-        Node* nextNode = new Node(tankarray[i]);
-        currNode -> m_next = nextNode;
-        currNode = nextNode;
-    }
-    //Set tail for this list as the last item in the array
-    m_tail = new Node(tankarray[size-1]);
-    //Set the last node from the loop above's next node to the tail node
-    currNode -> m_next = m_tail;
-}
-*/ 
 TankList::TankList() {
     m_head = nullptr;
     m_tail = nullptr;
@@ -107,15 +85,23 @@ Tank* TankList::searchFor(string target) {
     return nullptr;
 }
 
-int TankList::removeEntry(string target) {
-  return 0;
-}
-
 void TankList::pushHead() {
   Node* pastHead = m_head;
   m_head = pastHead->getNext();
   free(pastHead);
   return;
+}
+
+void TankList::freeList() {
+    Node* currNode = m_head;
+    Node* nextNode = m_head -> getNext();
+    while (currNode != nullptr) {
+        //Free the current node, set current node to next node and set next node to the node after.
+        free(currNode);
+        currNode = nextNode;
+        nextNode = currNode -> getNext();
+    }
+    cout << "Successfully cleared tanklist memory." << endl;
 }
 
 #endif
