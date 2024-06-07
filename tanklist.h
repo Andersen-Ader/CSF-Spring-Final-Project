@@ -31,7 +31,7 @@ TankList::TankList() {
 TankList::TankList(const string FILENAME) {
   string identifier, name, armament, nation, bday;
   ifstream tanksFile;
-  tanksFile.open("tanks.txt");
+  tanksFile.open(FILENAME);
 
   tanksFile >> identifier >> name >> armament >> nation >> bday;
 

@@ -12,7 +12,7 @@ void Remove(TankList* tanklist);        //removes a node based on the given iden
 void Save(TankList* tanklist);          //saves the current linked list to a file
 void Quit(TankList* tanklist);          //saves the linked list and exits the program
 
-int main (int argc, char *argv[]) {
+int main (void) {
   string userCommand;
 
   TankList tanklist("tanks.txt");
