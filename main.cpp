@@ -17,7 +17,7 @@ int main (int argc, char *argv[]) {
 
   TankList tanklist("tanks.txt");
 
-  while (true) {
+  while (true) {  //parses user input to call correct function
     cout << ">> ";
     cin >> userCommand;
     if (!userCommand.compare("New")) {
@@ -40,7 +40,7 @@ int main (int argc, char *argv[]) {
   return 0;
 }
 
-void New(TankList* tanklist) {
+void New(TankList* tanklist) { 
   string identifier, name, armament, nation, bday;
   cout << "Identifier: ";
   cin >> identifier;
@@ -55,7 +55,7 @@ void New(TankList* tanklist) {
 
   Tank tank(identifier, name, armament, nation, bday);
 
-  tanklist -> pushBack(tank);
+  tanklist -> pushBack(tank); //see TankList::pushBack in tanklist.h 
 
   return;
 }
@@ -64,9 +64,9 @@ void Print(TankList* tanklist) {
   string userIn;
   cout << "Enter Identifier: ";
   cin >> userIn;
-  Tank* tank = tanklist->searchFor(userIn);
+  Tank* tank = tanklist->searchFor(userIn); //see TankList::searchFor in tanklist.h
   if (tank != nullptr) {
-    tank->print();
+    tank->print();  //see Tank::print in tank.h
   } else {
     std::cout << userIn << " is not a valid identifier" << endl;
   }
@@ -76,20 +76,20 @@ void Print(TankList* tanklist) {
 void Remove(TankList* tanklist) {
   string userIn;
   
-  Node* currNode = tanklist->getHead();
+  Node* currNode = tanklist->getHead();  // see tanklist.h
   Node* previousNode = tanklist->getHead();
 
   cout << "Enter Identifier: ";
   cin >> userIn;
 
-  if(currNode->m_tank.getIdentifier() == userIn) {
+  if(currNode->m_tank.getIdentifier() == userIn) { // checks if chosen tank is head and if so runs pushHead to remove the head from the list and promote next node to head
     tanklist->pushHead();
     cout << "Entry Removed\n";
     return;
   }
 
   currNode = currNode->m_next;
-  while (currNode->m_tank.getIdentifier() != userIn) {
+  while (currNode->m_tank.getIdentifier() != userIn) { // loops through the list till it finds the users chose node and removes it
     currNode = currNode->m_next;
     previousNode = previousNode->m_next;
   }
@@ -104,7 +104,7 @@ void Remove(TankList* tanklist) {
 
 void Save(TankList* tanklist) {
   ofstream tanksFile;
-  tanksFile.open("tanks.txt");
+  tanksFile.open("tanks.txt"); // saves the current list to the same file as it is read in from 
 
   Node* currNode = tanklist->getHead();
   while (currNode != nullptr) {
@@ -117,7 +117,7 @@ void Save(TankList* tanklist) {
   return;
 }
 
-void Quit(TankList* tanklist) {
+void Quit(TankList* tanklist) { // saves the list to disk using the same function as Save then frees the memory
   Save(tanklist);
   tanklist->freeList();
 }
